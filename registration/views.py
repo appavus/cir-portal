@@ -130,3 +130,10 @@ class StudentFilterExternalView(ListView):
         return Student.Objects.filter(cgpa__gte=cgpa, curr_arrears=arrears ,branch=branch ,tenth_mark__gte=tenth ,twelth_mark__gte=twelth)
 
 
+class StudentTechnicalTestEntryView(TemplateView):
+    template_name = "register/cirstaff/tests/technical_tests.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(StudentTechnicalTestEntryView, self).get_context_data(**kwargs)
+        context['myvar'] = Test.Objects.all()
+        return context
